@@ -172,6 +172,7 @@ primaryExpression
     | HexLiteral
     | StringLiteral
     | Identifier
+    | elementaryTypeNameExpression
     ;
 
 functionCall : ( Identifier | newExpression | typename ) ( ( '.' Identifier ) | ( '[' expression ']' ) )* '(' expression? ( ',' expression )* ')' ;
@@ -185,6 +186,7 @@ assemblyAssignment : Identifier ':=' functionalAssemblyExpression | '=:' Identif
 functionalAssemblyExpression : Identifier '(' assemblyItem? ( ',' assemblyItem )* ')' ;
 
 arrayLiteral : '[' expression? ( ',' expression )* ']' ;
+elementaryTypeNameExpression : elementaryTypename '(' expression ')' ;
 numberLiteral : (DecimalNumber | HexNumber) NumberUnit? ;
 
 BooleanLiteral : 'true' | 'false' ;
