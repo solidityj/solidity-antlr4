@@ -139,7 +139,7 @@ Ufixed : 'ufixed' | 'ufixed0x8' | 'ufixed0x16' | 'ufixed0x24' | 'ufixed0x32' | '
 
 expression
     : expression ('++' | '--')
-    | functionCall
+    | expression '(' expression? ( ',' expression )* ')'
     | expression '[' expression ']'
     | 'new' Identifier
     | expression '.' Identifier
