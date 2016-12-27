@@ -62,7 +62,7 @@ modifierDefinition : 'modifier' Identifier parameterList? block ;
 functionDefinition
     : 'function' Identifier? parameterList
       ( functionCall | Identifier | 'constant' | 'payable' | 'external' | 'public' | 'internal' | 'private' )*
-      ( 'returns' parameterList )? block ;
+      ( 'returns' parameterList )? ( ';' | block ) ;
 eventDefinition
     : 'event' Identifier indexedParameterList 'anonymous'? ';' ;
 
