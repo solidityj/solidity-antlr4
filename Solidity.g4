@@ -202,13 +202,16 @@ IdentifierStart : [a-zA-Z$_] ;
 fragment
 IdentifierPart : [a-zA-Z0-9$_] ;
 
-StringLiteral : '"' StringCharacters? '"' ;
+StringLiteral
+    : '"' DoubleQuotedStringCharacter* '"'
+    | '\'' SingleQuotedStringCharacter* '\''
+    ;
 
 fragment
-StringCharacters : StringCharacter+ ;
+DoubleQuotedStringCharacter : ~["\r\n\\] | ('\\' .) ;
 
 fragment
-StringCharacter : ~["\r\n\\] | ('\\' .) ;
+SingleQuotedStringCharacter : ~['\r\n\\] | ('\\' .) ;
 
 WS  :  [ \t\r\n\u000C]+ -> skip
     ;
