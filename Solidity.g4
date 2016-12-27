@@ -166,7 +166,8 @@ expression
     ;
 
 primaryExpression
-    : BooleanLiteral
+    : arrayLiteral
+    | BooleanLiteral
     | numberLiteral
     | HexLiteral
     | StringLiteral
@@ -183,6 +184,7 @@ assemblyLocalBinding : 'let' Identifier ':=' functionalAssemblyExpression ;
 assemblyAssignment : Identifier ':=' functionalAssemblyExpression | '=:' Identifier ;
 functionalAssemblyExpression : Identifier '(' assemblyItem? ( ',' assemblyItem )* ')' ;
 
+arrayLiteral : '[' expression? ( ',' expression )* ']' ;
 numberLiteral : (DecimalNumber | HexNumber) NumberUnit? ;
 
 BooleanLiteral : 'true' | 'false' ;
