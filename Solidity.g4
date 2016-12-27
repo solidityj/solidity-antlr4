@@ -54,7 +54,7 @@ contractPart
     | enumDefinition
     ;
 
-stateVariableDeclaration : typename ( 'public' | 'internal' | 'private' )? Identifier ('=' expression)? ';' ;
+stateVariableDeclaration : typename ( 'public' | 'internal' | 'private' | 'constant' )* Identifier ('=' expression)? ';' ;
 usingForDeclaration : 'using' Identifier 'for' ('*' | typename) ';' ;
 structDefinition : 'struct' Identifier '{'
                      ( variableDeclaration ';' (variableDeclaration ';')* )? '}' ;
