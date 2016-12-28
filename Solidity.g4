@@ -74,10 +74,7 @@ indexedParameterList : '(' ( typeName 'indexed'? Identifier? (',' typeName 'inde
 parameterList :        '(' ( typeName            Identifier? (',' typeName            Identifier?)* )? ')' ;
 typeNameList :         '(' ( typeName (',' typeName )* )? ')' ;
 
-variableDeclaration
-    : ( typeName Identifier )
-    | ( typeName '(' Identifier (',' Identifier)+ ')' )
-    ;
+variableDeclaration : ( typeName Identifier ) ;
 
 typeName
     : elementaryTypeName
@@ -122,7 +119,7 @@ continueStatement : 'continue' ';' ;
 breakStatement : 'break' ';' ;
 returnStatement : 'return' expression? ';' ;
 throwStatement : 'throw' ';' ;
-variableDefinition : variableDeclaration ( '=' expression )? ';';
+variableDefinition : ( variableDeclaration | 'var' '(' Identifier ( ',' Identifier )* ')' ) ( '=' expression )? ';';
 
 elementaryTypeName
     : 'address' | 'bool' | 'string' | 'var'
