@@ -140,7 +140,7 @@ expression
     : expression ('++' | '--')
     | expression '(' expression? ( ',' expression )* ')'
     | expression '[' expression ']'
-    | 'new' Identifier
+    | 'new' typeName
     | expression '.' Identifier
     | '(' expression ')'
     | ('++' | '--') expression
