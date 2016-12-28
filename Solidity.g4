@@ -191,12 +191,16 @@ numberLiteral : (DecimalNumber | HexNumber) NumberUnit? ;
 
 BooleanLiteral : 'true' | 'false' ;
 DecimalNumber : [0-9]+ ;
-HexNumber : '0x' [0-9A-Fa-f]+ ;
+HexNumber : '0x' HexCharacter+ ;
 NumberUnit : 'wei' | 'szabo' | 'finney' | 'ether'
            | 'seconds' | 'minutes' | 'hours' | 'days' | 'weeks' | 'years' ;
-HexLiteral : 'hex' ('"' (('0'..'9')|('a'..'f')|('A'..'F'))* '"' | '\'' (('0'..'9')|('a'..'f')|('A'..'F'))* '\'') ;
+HexLiteral : 'hex' ('"' HexPair* '"' | '\'' HexPair* '\'') ;
 
-VersionLiteral : [0-9]+'.'[0-9]+'.'[0-9]+ ;
+fragment
+HexPair : HexCharacter HexCharacter ;
+
+fragment
+HexCharacter : [0-9A-Fa-f] ;
 
 Identifier : IdentifierStart IdentifierPart* ;
 
