@@ -154,7 +154,7 @@ expression
     | expression '**' expression
     | expression ('*' | '/' | '%') expression
     | expression ('+' | '-') expression
-    | expression ('<<' | '>>')
+    | expression ('<<' | '>>') expression
     | expression '&' expression
     | expression '^' expression
     | expression '|' expression
