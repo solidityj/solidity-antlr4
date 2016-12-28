@@ -42,7 +42,7 @@ contractDefinition
       '{' contractPart* '}'
     ;
 
-inheritanceSpecifier : Identifier ( '(' expression ( ',' expression )* ')' )? ;
+inheritanceSpecifier : userDefinedTypeName ( '(' expression ( ',' expression )* ')' )? ;
 
 contractPart
     : stateVariableDeclaration
@@ -81,11 +81,13 @@ variableDeclaration
 
 typeName
     : elementaryTypeName
-    | Identifier storageLocation?
+    | userDefinedTypeName storageLocation?
     | mapping
     | typeName '[' expression? ']' storageLocation?
     | functionTypeName
     ;
+
+userDefinedTypeName : Identifier ( '.' Identifier )* ;
 
 mapping : 'mapping' '(' elementaryTypeName '=>' typeName ')' ;
 functionTypeName : 'function' typeNameList ( 'internal' | 'external' | 'constant' | 'payable' )*
