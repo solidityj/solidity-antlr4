@@ -191,6 +191,8 @@ arrayLiteral : '[' expression? ( ',' expression )* ']' ;
 elementaryTypeNameExpression : elementaryTypeName '(' expression ')' ;
 numberLiteral : (DecimalNumber | HexNumber) NumberUnit? ;
 
+VersionLiteral : [0-9]+ '.' [0-9]+ '.' [0-9]+ ;
+
 BooleanLiteral : 'true' | 'false' ;
 DecimalNumber : [0-9]+ ;
 HexNumber : '0x' HexCharacter+ ;
