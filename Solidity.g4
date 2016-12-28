@@ -54,8 +54,8 @@ contractPart
     | enumDefinition
     ;
 
-stateVariableDeclaration : typename ( 'public' | 'internal' | 'private' | 'constant' )* Identifier ('=' expression)? ';' ;
-usingForDeclaration : 'using' Identifier 'for' ('*' | typename) ';' ;
+stateVariableDeclaration : typeName ( 'public' | 'internal' | 'private' | 'constant' )* Identifier ('=' expression)? ';' ;
+usingForDeclaration : 'using' Identifier 'for' ('*' | typeName) ';' ;
 structDefinition : 'struct' Identifier '{'
                      ( variableDeclaration ';' (variableDeclaration ';')* )? '}' ;
 modifierDefinition : 'modifier' Identifier parameterList? block ;
@@ -70,26 +70,26 @@ enumValue : Identifier ;
 enumDefinition
     : 'enum' Identifier '{' enumValue? (',' enumValue)* '}' ;
 
-indexedParameterList : '(' ( typename 'indexed'? Identifier? (',' typename 'indexed'? Identifier?)* )? ')' ;
-parameterList :        '(' ( typename            Identifier? (',' typename            Identifier?)* )? ')' ;
-typenameList :         '(' ( typename (',' typename )* )? ')' ;
+indexedParameterList : '(' ( typeName 'indexed'? Identifier? (',' typeName 'indexed'? Identifier?)* )? ')' ;
+parameterList :        '(' ( typeName            Identifier? (',' typeName            Identifier?)* )? ')' ;
+typeNameList :         '(' ( typeName (',' typeName )* )? ')' ;
 
 variableDeclaration
-    : ( typename Identifier )
-    | ( typename '(' Identifier (',' Identifier)+ ')' )
+    : ( typeName Identifier )
+    | ( typeName '(' Identifier (',' Identifier)+ ')' )
     ;
 
-typename
-    : elementaryTypename
+typeName
+    : elementaryTypeName
     | Identifier storageLocation?
     | mapping
-    | typename '[' expression? ']' storageLocation?
-    | functionTypename
+    | typeName '[' expression? ']' storageLocation?
+    | functionTypeName
     ;
 
-mapping : 'mapping' '(' elementaryTypename '=>' typename ')' ;
-functionTypename : 'function' typenameList ( 'internal' | 'external' | 'constant' | 'payable' )*
-                   ( 'returns' typenameList )? ;
+mapping : 'mapping' '(' elementaryTypeName '=>' typeName ')' ;
+functionTypeName : 'function' typeNameList ( 'internal' | 'external' | 'constant' | 'payable' )*
+                   ( 'returns' typeNameList )? ;
 storageLocation : 'memory' | 'storage' ;
 
 block : '{' statement* '}' ;
@@ -122,7 +122,7 @@ returnStatement : 'return' expression? ';' ;
 throwStatement : 'throw' ';' ;
 variableDefinition : variableDeclaration ( '=' expression )? ';';
 
-elementaryTypename
+elementaryTypeName
     : 'address' | 'bool' | 'string' | 'var'
     | Int | Uint | Byte | Fixed | Ufixed
     ;
@@ -175,8 +175,8 @@ primaryExpression
     | elementaryTypeNameExpression
     ;
 
-functionCall : ( Identifier | newExpression | typename ) ( ( '.' Identifier ) | ( '[' expression ']' ) )* '(' expression? ( ',' expression )* ')' ;
-newExpression : 'new' (typename | Identifier) ;
+functionCall : ( Identifier | newExpression | typeName ) ( ( '.' Identifier ) | ( '[' expression ']' ) )* '(' expression? ( ',' expression )* ')' ;
+newExpression : 'new' (typeName | Identifier) ;
 
 inlineAssemblyBlock : '{' assemblyItem* '}' ;
 
@@ -186,7 +186,7 @@ assemblyAssignment : Identifier ':=' functionalAssemblyExpression | '=:' Identif
 functionalAssemblyExpression : Identifier '(' assemblyItem? ( ',' assemblyItem )* ')' ;
 
 arrayLiteral : '[' expression? ( ',' expression )* ']' ;
-elementaryTypeNameExpression : elementaryTypename '(' expression ')' ;
+elementaryTypeNameExpression : elementaryTypeName '(' expression ')' ;
 numberLiteral : (DecimalNumber | HexNumber) NumberUnit? ;
 
 BooleanLiteral : 'true' | 'false' ;
