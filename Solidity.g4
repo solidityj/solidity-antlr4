@@ -185,7 +185,7 @@ assemblyAssignment : Identifier ':=' functionalAssemblyExpression | '=:' Identif
 functionalAssemblyExpression : Identifier '(' assemblyItem? ( ',' assemblyItem )* ')' ;
 
 arrayLiteral : '[' expression? ( ',' expression )* ']' ;
-elementaryTypeNameExpression : elementaryTypeName '(' expression ')' ;
+elementaryTypeNameExpression : elementaryTypeName ;
 numberLiteral : (DecimalNumber | HexNumber) NumberUnit? ;
 
 VersionLiteral : [0-9]+ '.' [0-9]+ '.' [0-9]+ ;
