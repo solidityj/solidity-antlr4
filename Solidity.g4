@@ -203,6 +203,30 @@ HexPair : HexCharacter HexCharacter ;
 fragment
 HexCharacter : [0-9A-Fa-f] ;
 
+ReservedKeyword
+  : 'abstract'
+  | 'after'
+  | 'case'
+  | 'catch'
+  | 'default'
+  | 'final'
+  | 'in'
+  | 'inline'
+  | 'interface'
+  | 'let'
+  | 'match'
+  | 'null'
+  | 'of'
+  | 'pure'
+  | 'relocatable'
+  | 'static'
+  | 'switch'
+  | 'try'
+  | 'type'
+  | 'typeof'
+  | 'view'
+  ;
+
 Identifier : IdentifierStart IdentifierPart* ;
 
 fragment
