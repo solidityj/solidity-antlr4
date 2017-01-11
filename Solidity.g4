@@ -138,7 +138,7 @@ Ufixed : 'ufixed' | 'ufixed0x8' | 'ufixed0x16' | 'ufixed0x24' | 'ufixed0x32' | '
 
 expression
     : expression ('++' | '--')
-    | expression '(' expression? ( ',' expression )* ')'
+    | functionCall
     | expression '[' expression ']'
     | 'new' typeName
     | expression '.' Identifier
@@ -174,8 +174,14 @@ primaryExpression
     | elementaryTypeNameExpression
     ;
 
-functionCall : ( Identifier | newExpression | typeName ) ( ( '.' Identifier ) | ( '[' expression ']' ) )* '(' expression? ( ',' expression )* ')' ;
-newExpression : 'new' (typeName | Identifier) ;
+expressionList : expression (',' expression)* ;
+nameValueList : Identifier ':' expression (',' Identifier ':' expression)* ;
+
+functionCall : ( Identifier | newExpression | typeName ) ( ( '.' Identifier ) | ( '[' expression ']' ) )* '(' functionCallArguments ')' ;
+functionCallArguments
+    : '{' nameValueList? '}'
+    | expressionList?
+    ;
 
 inlineAssemblyBlock : '{' assemblyItem* '}' ;
 
