@@ -74,13 +74,13 @@ indexedParameterList : '(' ( typeName 'indexed'? Identifier? (',' typeName 'inde
 parameterList :        '(' ( typeName            Identifier? (',' typeName            Identifier?)* )? ')' ;
 typeNameList :         '(' ( typeName (',' typeName )* )? ')' ;
 
-variableDeclaration : ( typeName Identifier ) ;
+variableDeclaration : ( typeName storageLocation? Identifier ) ;
 
 typeName
     : elementaryTypeName
-    | userDefinedTypeName storageLocation?
+    | userDefinedTypeName
     | mapping
-    | typeName '[' expression? ']' storageLocation?
+    | typeName '[' expression? ']'
     | functionTypeName
     ;
 
