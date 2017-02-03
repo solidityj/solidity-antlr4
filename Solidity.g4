@@ -183,6 +183,8 @@ functionCallArguments
     | expressionList?
     ;
 
+newExpression : 'new' typeName ;
+
 inlineAssemblyBlock : '{' assemblyItem* '}' ;
 
 assemblyItem : Identifier | functionalAssemblyExpression | inlineAssemblyBlock | assemblyLocalBinding | assemblyAssignment | numberLiteral | StringLiteral | HexLiteral ;
