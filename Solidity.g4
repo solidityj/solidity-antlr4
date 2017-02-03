@@ -113,7 +113,7 @@ expressionStatement : expression ';' ;
 ifStatement : 'if' '(' expression ')' statement ( 'else' statement )? ;
 whileStatement : 'while' '(' expression ')' statement ;
 placeholderStatement : '_' ';' ;
-simpleStatement : ( variableDefinition | expressionStatement ) ;
+simpleStatement : ( variableDeclarationStatement | expressionStatement ) ;
 forStatement : 'for' '(' simpleStatement? ( expression ';' )? (expression)? ')' statement ;
 inlineAssemblyStatement : 'assembly' inlineAssemblyBlock ;
 doWhileStatement : 'do' statement 'while' '(' expression ')' ';' ;
@@ -121,7 +121,8 @@ continueStatement : 'continue' ';' ;
 breakStatement : 'break' ';' ;
 returnStatement : 'return' expression? ';' ;
 throwStatement : 'throw' ';' ;
-variableDefinition : ( variableDeclaration | 'var' '(' Identifier ( ',' Identifier )* ')' ) ( '=' expression )? ';';
+declarationList : '(' ( Identifier ',' | ',' )* ( Identifier ','? | ',' ) ')' ;
+variableDeclarationStatement : ( 'var' declarationList | variableDeclaration ) ( '=' expression )? ';';
 
 elementaryTypeName
     : 'address' | 'bool' | 'string' | 'var'
