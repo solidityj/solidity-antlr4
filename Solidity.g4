@@ -30,10 +30,12 @@ version : versionConstraint versionConstraint? ;
 versionOperator : '^' | '>=' | '>' | '<' | '<=' ;
 versionConstraint : versionOperator? VersionLiteral ;
 
+importDeclaration : Identifier ('as' Identifier)? ;
+
 importDirective
     : 'import' StringLiteral ('as' Identifier)? ';'
     | 'import' ('*' | Identifier) ('as' Identifier)? 'from' StringLiteral ';'
-    | 'import' '{' Identifier ('as' Identifier)? ( ',' Identifier ('as' Identifier)? )* '}' 'from' StringLiteral ';'
+    | 'import' '{' importDeclaration ( ',' importDeclaration )* '}' 'from' StringLiteral ';'
     ;
 
 contractDefinition
