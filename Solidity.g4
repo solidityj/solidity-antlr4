@@ -121,8 +121,8 @@ continueStatement : 'continue' ';' ;
 breakStatement : 'break' ';' ;
 returnStatement : 'return' expression? ';' ;
 throwStatement : 'throw' ';' ;
-declarationList : '(' ( Identifier ',' | ',' )* ( Identifier ','? | ',' ) ')' ;
-variableDeclarationStatement : ( 'var' declarationList | variableDeclaration ) ( '=' expression )? ';';
+variableDeclarationStatement : ( 'var' identifierList | variableDeclaration ) ( '=' expression )? ';';
+identifierList : '(' ( Identifier? ',' )* Identifier? ')' ;
 
 elementaryTypeName
     : 'address' | 'bool' | 'string' | 'var'
