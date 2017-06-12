@@ -39,7 +39,7 @@ importDirective
     ;
 
 contractDefinition
-    : ( 'contract' | 'library' ) Identifier
+    : ( 'contract' | 'interface' | 'library' ) Identifier
       ( 'is' inheritanceSpecifier (',' inheritanceSpecifier )* )?
       '{' contractPart* '}'
     ;
@@ -223,7 +223,6 @@ ReservedKeyword
   | 'final'
   | 'in'
   | 'inline'
-  | 'interface'
   | 'let'
   | 'match'
   | 'null'
