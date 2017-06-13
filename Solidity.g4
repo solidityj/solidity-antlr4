@@ -178,7 +178,7 @@ primaryExpression
     ;
 
 expressionList : expression (',' expression)* ;
-nameValueList : Identifier ':' expression (',' Identifier ':' expression)* ;
+nameValueList : Identifier ':' expression (',' Identifier ':' expression)* ','? ;
 
 functionCall : ( Identifier | newExpression | typeName ) ( ( '.' Identifier ) | ( '[' expression ']' ) )* '(' functionCallArguments ')' ;
 functionCallArguments
