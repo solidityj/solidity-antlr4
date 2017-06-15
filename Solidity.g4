@@ -170,12 +170,12 @@ expression
     ;
 
 primaryExpression
-    : arrayLiteral
-    | BooleanLiteral
+    : BooleanLiteral
     | numberLiteral
     | HexLiteral
     | StringLiteral
     | Identifier
+    | arrayLiteral
     | elementaryTypeNameExpression
     ;
 
