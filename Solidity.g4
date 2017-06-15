@@ -195,7 +195,7 @@ assemblyLocalBinding : 'let' Identifier ':=' functionalAssemblyExpression ;
 assemblyAssignment : Identifier ':=' functionalAssemblyExpression | '=:' Identifier ;
 functionalAssemblyExpression : Identifier '(' assemblyItem? ( ',' assemblyItem )* ')' ;
 
-arrayLiteral : '[' expression? ( ',' expression )* ']' ;
+arrayLiteral : '[' (expression ( ',' expression )* ']' ;
 elementaryTypeNameExpression : elementaryTypeName ;
 numberLiteral : (DecimalNumber | HexNumber) NumberUnit? ;
 
