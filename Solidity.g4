@@ -114,7 +114,7 @@ expressionStatement : expression ';' ;
 ifStatement : 'if' '(' expression ')' statement ( 'else' statement )? ;
 whileStatement : 'while' '(' expression ')' statement ;
 simpleStatement : ( variableDeclarationStatement | expressionStatement ) ;
-forStatement : 'for' '(' simpleStatement? ( expression ';' )? (expression)? ')' statement ;
+forStatement : 'for' '(' ( simpleStatement | ';' ) expression? ';' expression? ')' statement ;
 inlineAssemblyStatement : 'assembly' inlineAssemblyBlock ;
 doWhileStatement : 'do' statement 'while' '(' expression ')' ';' ;
 continueStatement : 'continue' ';' ;
