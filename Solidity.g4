@@ -61,9 +61,11 @@ usingForDeclaration : 'using' Identifier 'for' ('*' | typeName) ';' ;
 structDefinition : 'struct' Identifier '{'
                      ( variableDeclaration ';' (variableDeclaration ';')* )? '}' ;
 modifierDefinition : 'modifier' Identifier parameterList? block ;
+modifierInvocation : Identifier ( '(' expressionList? ')' )? ;
+
 functionDefinition
     : 'function' Identifier? parameterList
-      ( functionCall | Identifier | 'constant' | 'payable' | 'external' | 'public' | 'internal' | 'private' )*
+      ( modifierInvocation | 'constant' | 'payable' | 'external' | 'public' | 'internal' | 'private' )*
       ( 'returns' parameterList )? ( ';' | block ) ;
 eventDefinition
     : 'event' Identifier indexedParameterList 'anonymous'? ';' ;
