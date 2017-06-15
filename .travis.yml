@@ -1,2 +1,2 @@
 language: java
-script: ./run-tests.sh test.sol
+script: ./run-tests.sh
