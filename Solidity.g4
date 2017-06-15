@@ -180,7 +180,8 @@ primaryExpression
     ;
 
 expressionList : expression (',' expression)* ;
-nameValueList : Identifier ':' expression (',' Identifier ':' expression)* ;
+nameValueList : nameValue (',' nameValue)* ','? ;
+nameValue : Identifier ':' expression ;
 
 functionCallArguments
     : '{' nameValueList? '}'
