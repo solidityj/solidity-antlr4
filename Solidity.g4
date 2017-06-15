@@ -103,7 +103,6 @@ statement
     | block
     | inlineAssemblyStatement
     | doWhileStatement
-    | placeholderStatement
     | continueStatement
     | breakStatement
     | returnStatement
@@ -114,7 +113,6 @@ statement
 expressionStatement : expression ';' ;
 ifStatement : 'if' '(' expression ')' statement ( 'else' statement )? ;
 whileStatement : 'while' '(' expression ')' statement ;
-placeholderStatement : '_' ';' ;
 simpleStatement : ( variableDeclarationStatement | expressionStatement ) ;
 forStatement : 'for' '(' simpleStatement? ( expression ';' )? (expression)? ')' statement ;
 inlineAssemblyStatement : 'assembly' inlineAssemblyBlock ;
