@@ -189,9 +189,21 @@ functionCallArguments
 
 inlineAssemblyBlock : '{' assemblyItem* '}' ;
 
-assemblyItem : Identifier | functionalAssemblyExpression | inlineAssemblyBlock | assemblyLocalBinding | assemblyAssignment | numberLiteral | StringLiteral | HexLiteral ;
+assemblyItem
+    : Identifier
+    | functionalAssemblyExpression
+    | inlineAssemblyBlock
+    | assemblyLocalBinding
+    | assemblyAssignment
+    | assemblyLabel
+    | numberLiteral
+    | StringLiteral
+    | HexLiteral
+    ;
+
 assemblyLocalBinding : 'let' Identifier ':=' functionalAssemblyExpression ;
 assemblyAssignment : Identifier ':=' functionalAssemblyExpression | '=:' Identifier ;
+assemblyLabel : Identifier ':' ;
 functionalAssemblyExpression : Identifier '(' assemblyItem? ( ',' assemblyItem )* ')' ;
 
 arrayLiteral : '[' ( expression ( ',' expression )* )? ']' ;
