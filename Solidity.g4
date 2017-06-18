@@ -115,7 +115,7 @@ ifStatement : 'if' '(' expression ')' statement ( 'else' statement )? ;
 whileStatement : 'while' '(' expression ')' statement ;
 simpleStatement : ( variableDeclarationStatement | expressionStatement ) ;
 forStatement : 'for' '(' ( simpleStatement | ';' ) expression? ';' expression? ')' statement ;
-inlineAssemblyStatement : 'assembly' StringLiteral? inlineAssemblyBlock ;
+inlineAssemblyStatement : 'assembly' StringLiteral? assemblyBlock ;
 doWhileStatement : 'do' statement 'while' '(' expression ')' ';' ;
 continueStatement : 'continue' ';' ;
 breakStatement : 'break' ';' ;
@@ -187,24 +187,48 @@ functionCallArguments
     | expressionList?
     ;
 
-inlineAssemblyBlock : '{' assemblyItem* '}' ;
+assemblyBlock : '{' assemblyItem* '}' ;
 
 assemblyItem
     : Identifier
-    | functionalAssemblyExpression
-    | inlineAssemblyBlock
-    | assemblyLocalBinding
+    | assemblyBlock
+    | assemblyExpression
+    | assemblyLocalDefinition
     | assemblyAssignment
-    | assemblyLabel
+    | assemblyRightAssignment
+    | labelDefinition
+    | assemblySwitch
+    | assemblyFunctionDefinition
+    | assemblyFor
+    | 'break' | 'continue'
+    | subAssembly
+    | dataSize
+    | linkerSymbol
+    | 'errorLabel' | 'bytecodeSize'
     | numberLiteral
     | StringLiteral
     | HexLiteral
     ;
 
-assemblyLocalBinding : 'let' Identifier ':=' functionalAssemblyExpression ;
-assemblyAssignment : Identifier ':=' functionalAssemblyExpression | '=:' Identifier ;
-assemblyLabel : Identifier ':' ;
-functionalAssemblyExpression : Identifier '(' assemblyItem? ( ',' assemblyItem )* ')' ;
+assemblyExpression : assemblyFunctionCall | assemblyLiteral ;
+assemblyFunctionCall : ( 'return' | 'byte' | 'address' | Identifier ) ( '(' assemblyItem? ( ',' assemblyItem )* ')' )? ;
+assemblyLocalDefinition : 'let' assemblyIdentifierOrList ':=' assemblyExpression ;
+assemblyAssignment : assemblyIdentifierOrList ':=' assemblyExpression ;
+assemblyIdentifierOrList : Identifier | '(' assemblyIdentifierList ')' ;
+assemblyIdentifierList : Identifier ( ',' Identifier )* ;
+assemblyRightAssignment : '=:' Identifier ;
+labelDefinition : Identifier ':' ;
+assemblySwitch : 'switch' assemblyExpression assemblyCase* ( 'default' ':' assemblyBlock )? ;
+assemblyCase : 'case' assemblyLiteral ':' assemblyBlock ;
+assemblyFunctionDefinition : 'function' Identifier '(' assemblyIdentifierList? ')'
+    ( '->'  assemblyIdentifierList )? assemblyBlock ;
+assemblyFor : 'for' ( assemblyBlock | assemblyExpression)
+    assemblyExpression ( assemblyBlock | assemblyExpression) assemblyBlock ;
+assemblyElementaryOperation : Identifier | StringLiteral | numberLiteral ;
+assemblyLiteral : StringLiteral | numberLiteral ;
+subAssembly : 'assembly' Identifier assemblyBlock ;
+dataSize : 'dataSize' '(' StringLiteral ')' ;
+linkerSymbol : 'linkerSymbol' '(' StringLiteral ')' ;
 
 arrayLiteral : '[' ( expression ( ',' expression )* )? ']' ;
 elementaryTypeNameExpression : elementaryTypeName ;
