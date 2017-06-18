@@ -208,8 +208,8 @@ assemblyItem
     | assemblyLiteral
     ;
 
-assemblyExpression : assemblyFunctionCall | assemblyLiteral ;
-assemblyFunctionCall : ( 'return' | 'byte' | 'address' | Identifier ) ( '(' assemblyItem? ( ',' assemblyItem )* ')' )? ;
+assemblyExpression : assemblyCall | assemblyLiteral ;
+assemblyCall : ( 'return' | 'byte' | 'address' | Identifier ) ( '(' assemblyExpression? ( ',' assemblyExpression )* ')' )? ;
 assemblyLocalDefinition : 'let' assemblyIdentifierOrList ':=' assemblyExpression ;
 assemblyAssignment : assemblyIdentifierOrList ':=' assemblyExpression ;
 assemblyIdentifierOrList : Identifier | '(' assemblyIdentifierList ')' ;
@@ -220,8 +220,8 @@ assemblySwitch : 'switch' assemblyExpression assemblyCase* ( 'default' ':' assem
 assemblyCase : 'case' assemblyLiteral ':' assemblyBlock ;
 assemblyFunctionDefinition : 'function' Identifier '(' assemblyIdentifierList? ')'
     ( '->'  assemblyIdentifierList )? assemblyBlock ;
-assemblyFor : 'for' ( assemblyBlock | assemblyExpression)
-    assemblyExpression ( assemblyBlock | assemblyExpression) assemblyBlock ;
+assemblyFor : 'for' ( assemblyBlock | assemblyExpression )
+    assemblyExpression ( assemblyBlock | assemblyExpression ) assemblyBlock ;
 assemblyLiteral : StringLiteral | DecimalNumber | HexNumber | HexLiteral ;
 subAssembly : 'assembly' Identifier assemblyBlock ;
 dataSize : 'dataSize' '(' StringLiteral ')' ;
