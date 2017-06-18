@@ -205,9 +205,7 @@ assemblyItem
     | dataSize
     | linkerSymbol
     | 'errorLabel' | 'bytecodeSize'
-    | numberLiteral
-    | StringLiteral
-    | HexLiteral
+    | assemblyLiteral
     ;
 
 assemblyExpression : assemblyFunctionCall | assemblyLiteral ;
@@ -224,8 +222,7 @@ assemblyFunctionDefinition : 'function' Identifier '(' assemblyIdentifierList? '
     ( '->'  assemblyIdentifierList )? assemblyBlock ;
 assemblyFor : 'for' ( assemblyBlock | assemblyExpression)
     assemblyExpression ( assemblyBlock | assemblyExpression) assemblyBlock ;
-assemblyElementaryOperation : Identifier | StringLiteral | numberLiteral ;
-assemblyLiteral : StringLiteral | numberLiteral ;
+assemblyLiteral : StringLiteral | DecimalNumber | HexNumber | HexLiteral ;
 subAssembly : 'assembly' Identifier assemblyBlock ;
 dataSize : 'dataSize' '(' StringLiteral ')' ;
 linkerSymbol : 'linkerSymbol' '(' StringLiteral ')' ;
