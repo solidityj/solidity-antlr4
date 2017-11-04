@@ -492,3 +492,9 @@ contract test {
     return 2;
   }
 }
+
+contract test {
+  function f() {
+    uint256 a = 2.3e5;
+  }
+}
