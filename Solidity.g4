@@ -338,7 +338,7 @@ linkerSymbol
   : 'linkerSymbol' '(' StringLiteral ')' ;
 
 tupleExpression
-  : '(' ( expression ( ',' expression )* )? ')'
+  : '(' ( expression? ( ',' expression? )* ) ')'
   | '[' ( expression ( ',' expression )* )? ']' ;
 
 elementaryTypeNameExpression

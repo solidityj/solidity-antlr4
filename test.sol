@@ -498,3 +498,12 @@ contract test {
     uint256 a = 2.3e5;
   }
 }
+
+contract test {
+  function f() {
+    uint256 a;
+    (a,) = g();
+    (,) = g();
+    () = ();
+  }
+}
