@@ -461,13 +461,13 @@ contract test {
 			mstore(0x40, 0x60) // store the "free memory pointer"
 			// function dispatcher
 			switch div(calldataload(0), exp(2, 226))
-			case 0xb3de648b: {
+			case 0xb3de648b {
 				let (r) := f(calldataload(4))
 				let ret := $allocate(0x20)
 				mstore(ret, r)
 				return(ret, 0x20)
 			}
-			default: { revert(0, 0) }
+			default { revert(0, 0) }
 			// memory allocator
 			function $allocate(size) -> pos {
 				pos := mload(0x40)
