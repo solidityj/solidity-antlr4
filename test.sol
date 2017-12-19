@@ -479,6 +479,7 @@ contract test {
 				for { let i := 0 } lt(i, x) { i := add(i, 1) } {
 					y := mul(2, y)
 				}
+				if gt(y, 2) { revert(0, 0) }
 			}
 		}
   }

@@ -279,6 +279,7 @@ assemblyItem
   | assemblySwitch
   | assemblyFunctionDefinition
   | assemblyFor
+  | assemblyIf
   | BreakKeyword
   | ContinueKeyword
   | subAssembly
@@ -327,6 +328,9 @@ assemblyFunctionReturns
 assemblyFor
   : 'for' ( assemblyBlock | assemblyExpression )
     assemblyExpression ( assemblyBlock | assemblyExpression ) assemblyBlock ;
+
+assemblyIf
+  : 'if' assemblyExpression assemblyBlock ;
 
 assemblyLiteral
   : StringLiteral | DecimalNumber | HexNumber | HexLiteral ;
