@@ -411,7 +411,7 @@ PureKeyword : 'pure' ;
 ViewKeyword : 'view' ;
 
 Identifier
-  : (IdentifierStart IdentifierPart* | 'from') ;
+  : IdentifierStart IdentifierPart* ;
 
 fragment
 IdentifierStart
