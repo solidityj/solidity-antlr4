@@ -508,3 +508,11 @@ contract test {
     () = ();
   }
 }
+
+contract test {
+  function foo() public returns (byte b) {
+    assembly {
+      n := byte(0x0)
+    }
+  }
+}
