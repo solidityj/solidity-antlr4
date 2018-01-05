@@ -90,7 +90,7 @@ modifierList
     | PublicKeyword | InternalKeyword | PrivateKeyword )* ;
 
 eventDefinition
-  : 'event' identifier indexedParameterList AnonymousKeyword? ';' ;
+  : 'event' identifier eventParameterList AnonymousKeyword? ';' ;
 
 enumValue
   : identifier ;
@@ -98,22 +98,22 @@ enumValue
 enumDefinition
   : 'enum' identifier '{' enumValue? (',' enumValue)* '}' ;
 
-indexedParameterList
-  : '(' ( indexedParameter (',' indexedParameter)* )? ')' ;
-
-indexedParameter
-  : typeName ( storageLocation | IndexedKeyword )* identifier? ;
-
 parameterList
   : '(' ( parameter (',' parameter)* )? ')' ;
 
 parameter
   : typeName storageLocation? identifier? ;
 
-typeNameList
-  : '(' ( unnamedParameter (',' unnamedParameter)* )? ')' ;
+eventParameterList
+  : '(' ( eventParameter (',' eventParameter)* )? ')' ;
 
-unnamedParameter
+eventParameter
+  : typeName IndexedKeyword? identifier? ;
+
+functionTypeParameterList
+  : '(' ( functionTypeParameter (',' functionTypeParameter)* )? ')' ;
+
+functionTypeParameter
   : typeName storageLocation? ;
 
 variableDeclaration
@@ -133,9 +133,9 @@ mapping
   : 'mapping' '(' elementaryTypeName '=>' typeName ')' ;
 
 functionTypeName
-  : 'function' typeNameList
+  : 'function' functionTypeParameterList
     ( InternalKeyword | ExternalKeyword | stateMutability )*
-    ( 'returns' typeNameList )? ;
+    ( 'returns' functionTypeParameterList )? ;
 
 storageLocation
   : 'memory' | 'storage' ;
