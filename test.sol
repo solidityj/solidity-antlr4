@@ -524,3 +524,9 @@ contract test {
     }
   }
 }
+
+contract test {
+    function() {
+        emit EventCalled(1, 2, 3);
+    }
+}

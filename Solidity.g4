@@ -157,6 +157,7 @@ statement
   | breakStatement
   | returnStatement
   | throwStatement
+  | emitStatement
   | simpleStatement ;
 
 expressionStatement
@@ -191,6 +192,9 @@ returnStatement
 
 throwStatement
   : 'throw' ';' ;
+
+emitStatement
+  : 'emit' functionCall ';' ;
 
 variableDeclarationStatement
   : ( 'var' identifierList | variableDeclaration ) ( '=' expression )? ';';
@@ -264,6 +268,9 @@ nameValue
 functionCallArguments
   : '{' nameValueList? '}'
   | expressionList? ;
+
+functionCall
+  : expression '(' functionCallArguments ')' ;
 
 assemblyBlock
   : '{' assemblyItem* '}' ;
