@@ -530,3 +530,7 @@ contract test {
         emit EventCalled(1, 2, 3);
     }
 }
+
+contract test {
+    constructor(uint a, uint b) withModifier {}
+}

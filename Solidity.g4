@@ -56,6 +56,7 @@ contractPart
   : stateVariableDeclaration
   | usingForDeclaration
   | structDefinition
+  | constructorDefinition
   | modifierDefinition
   | functionDefinition
   | eventDefinition
@@ -72,6 +73,9 @@ usingForDeclaration
 structDefinition
   : 'struct' identifier
     '{' ( variableDeclaration ';' (variableDeclaration ';')* )? '}' ;
+
+constructorDefinition
+  : 'constructor' parameterList modifierList block ;
 
 modifierDefinition
   : 'modifier' identifier parameterList? block ;
