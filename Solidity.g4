@@ -33,7 +33,8 @@ importDirective
   | 'import' '{' importDeclaration ( ',' importDeclaration )* '}' 'from' StringLiteral ';' ;
 
 contractDefinition
-  : ( 'contract' | 'interface' | 'library' ) identifier
+  : natSpecComment
+  ( 'contract' | 'interface' | 'library' ) identifier
     ( 'is' inheritanceSpecifier (',' inheritanceSpecifier )* )?
     '{' contractPart* '}' ;
 
@@ -71,8 +72,40 @@ modifierDefinition
 modifierInvocation
   : identifier ( '(' expressionList? ')' )? ;
 
+natSpecDescriptionText
+  : .+? ;
+
+natSpecDescription
+  : natSpecDescriptionText ( NatSpecPrefix natSpecDescriptionText )* ;
+
+NatSpecStart
+  : NatSpecPrefix NatSpecKeyword ;
+
+NatSpecPrefix
+  : '/// ' ;
+
+NatSpecKeyword
+  : '@'
+  ( 'title'
+  | 'author'
+  | 'notice'
+  | 'dev'
+  | 'param'
+  | 'return'
+  ) ;
+
+natSpecSingleLineComment
+  : NatSpecStart natSpecDescription ;
+
+natSpecMultilineComment
+  : '/*' (NatSpecKeyword natSpecDescriptionText)* '*/' ;
+
+natSpecComment
+  : natSpecSingleLineComment* | natSpecMultilineComment ;
+
 functionDefinition
-  : 'function' identifier? parameterList modifierList returnParameters? ( ';' | block ) ;
+  : natSpecComment
+    'function' identifier? parameterList modifierList returnParameters? ( ';' | block ) ;
 
 returnParameters
   : 'returns' parameterList ;
@@ -439,8 +472,9 @@ SingleQuotedStringCharacter
 WS
   : [ \t\r\n\u000C]+ -> skip ;
 
+// TODO: better specification
 COMMENT
-  : '/*' .*? '*/' -> channel(HIDDEN) ;
+  : '/*' ~[@] '*/' -> channel(HIDDEN) ;
 
 LINE_COMMENT
-  : '//' ~[\r\n]* -> channel(HIDDEN) ;
+  : '//' ~[/] ~[\r\n]* -> channel(HIDDEN) ;
