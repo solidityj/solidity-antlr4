@@ -142,7 +142,7 @@ functionTypeName
     ( 'returns' functionTypeParameterList )? ;
 
 storageLocation
-  : 'memory' | 'storage' ;
+  : 'memory' | 'storage' | 'calldata';
 
 stateMutability
   : PureKeyword | ConstantKeyword | ViewKeyword | PayableKeyword ;
