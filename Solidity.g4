@@ -201,7 +201,10 @@ emitStatement
   : 'emit' functionCall ';' ;
 
 variableDeclarationStatement
-  : ( 'var' identifierList | variableDeclaration ) ( '=' expression )? ';';
+  : ( 'var' identifierList | variableDeclaration | '(' variableDeclarationList ')' ) ( '=' expression )? ';';
+
+variableDeclarationList
+  : variableDeclaration? (',' variableDeclaration? )* ;
 
 identifierList
   : '(' ( identifier? ',' )* identifier? ')' ;

@@ -534,3 +534,9 @@ contract test {
 contract test {
     constructor(uint a, uint b) withModifier {}
 }
+
+contract test {
+  function () payable {
+    (bytes32 a, uint b) = foo();
+  }
+}
