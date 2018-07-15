@@ -540,3 +540,7 @@ contract test {
     (bytes32 a, uint b) = foo();
   }
 }
+
+contract test {
+  uint x = .1 ether;
+}
