@@ -375,7 +375,7 @@ DecimalNumber
   : ([0-9]+ | ([0-9]* '.' [0-9]+) ) ( [eE] [0-9]+ )? ;
 
 HexNumber
-  : '0x' HexCharacter+ ;
+  : '0' [xX] HexCharacter+ ;
 
 NumberUnit
   : 'wei' | 'szabo' | 'finney' | 'ether'
