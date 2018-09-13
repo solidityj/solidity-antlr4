@@ -128,7 +128,8 @@ typeName
   | userDefinedTypeName
   | mapping
   | typeName '[' expression? ']'
-  | functionTypeName ;
+  | functionTypeName
+  | 'address' 'payable' ;
 
 userDefinedTypeName
   : identifier ( '.' identifier )* ;
