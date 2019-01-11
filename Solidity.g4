@@ -364,7 +364,7 @@ numberLiteral
   : (DecimalNumber | HexNumber) NumberUnit? ;
 
 identifier
-  : ('from' | Identifier) ;
+  : ('from' | 'calldata' | Identifier) ;
 
 VersionLiteral
   : [0-9]+ '.' [0-9]+ '.' [0-9]+ ;
