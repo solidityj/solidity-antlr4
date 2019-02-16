@@ -178,7 +178,7 @@ simpleStatement
   : ( variableDeclarationStatement | expressionStatement ) ;
 
 forStatement
-  : 'for' '(' ( simpleStatement | ';' ) expression? ';' expression? ')' statement ;
+  : 'for' '(' ( simpleStatement | ';' ) ( expressionStatement | ';' ) expression? ')' statement ;
 
 inlineAssemblyStatement
   : 'assembly' StringLiteral? assemblyBlock ;
