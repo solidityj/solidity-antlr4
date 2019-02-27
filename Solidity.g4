@@ -248,9 +248,9 @@ primaryExpression
   | numberLiteral
   | HexLiteral
   | StringLiteral
-  | identifier
+  | identifier ('[' ']')?
   | tupleExpression
-  | elementaryTypeNameExpression ;
+  | elementaryTypeNameExpression ('[' ']')? ;
 
 expressionList
   : expression (',' expression)* ;
