@@ -348,21 +348,11 @@ tupleExpression
 elementaryTypeNameExpression
   : elementaryTypeName ;
 
-NatSpecKeyword
-  : '@'
-  ( 'title'
-  | 'author'
-  | 'notice'
-  | 'dev'
-  | 'param'
-  | 'return'
-  ) ;
-
 NatSpecMultilineComment
-  : '/**' NatSpecKeyword .*? '*/' ;
+  : '/**' .*? '*/' ;
 
 NatSpecSinglelineComment
-  : '///' NatSpecKeyword ;
+  : ([ \t]* '///' ~[\r\n]* [\r\n]?) + ;
 
 natspec
   : NatSpecMultilineComment | NatSpecSinglelineComment ;
