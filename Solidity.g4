@@ -348,8 +348,14 @@ tupleExpression
 elementaryTypeNameExpression
   : elementaryTypeName ;
 
+NatSpecMultilineComment
+  : '/**' .*? '*/' ;
+
+NatSpecSinglelineComment
+  : '///' .*? ;
+
 natspec
-  : NATSPEC_COMMENT | NATSPEC_LINE_COMMENT ;
+  : NatSpecMultilineComment | NatSpecSinglelineComment ;
 
 numberLiteral
   : (DecimalNumber | HexNumber) NumberUnit? ;
@@ -442,11 +448,8 @@ SingleQuotedStringCharacter
 WS
   : [ \t\r\n\u000C]+ -> skip ;
 
-NATSPEC_COMMENT
-  : '/**' .*? '*/' ;
 COMMENT
   : '/*' .*? '*/' -> channel(HIDDEN) ;
-NATSPEC_LINE_COMMENT
-  : ([ \t]* '///' ~[\r\n]* [\r\n]?) + ;
+
 LINE_COMMENT
   : '//' ~[\r\n]* -> channel(HIDDEN) ;
