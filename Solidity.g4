@@ -33,8 +33,7 @@ importDirective
   | 'import' '{' importDeclaration ( ',' importDeclaration )* '}' 'from' StringLiteral ';' ;
 
 contractDefinition
-  : natSpecComment
-  ( 'contract' | 'interface' | 'library' ) identifier
+  : natspec? ( 'contract' | 'interface' | 'library' ) identifier
     ( 'is' inheritanceSpecifier (',' inheritanceSpecifier )* )?
     '{' contractPart* '}' ;
 
@@ -72,40 +71,8 @@ modifierDefinition
 modifierInvocation
   : identifier ( '(' expressionList? ')' )? ;
 
-natSpecDescriptionText
-  : .+? ;
-
-natSpecDescription
-  : natSpecDescriptionText ( NatSpecPrefix natSpecDescriptionText )* ;
-
-NatSpecStart
-  : NatSpecPrefix NatSpecKeyword ;
-
-NatSpecPrefix
-  : '/// ' ;
-
-NatSpecKeyword
-  : '@'
-  ( 'title'
-  | 'author'
-  | 'notice'
-  | 'dev'
-  | 'param'
-  | 'return'
-  ) ;
-
-natSpecSingleLineComment
-  : NatSpecStart natSpecDescription ;
-
-natSpecMultilineComment
-  : '/*' (NatSpecKeyword natSpecDescriptionText)* '*/' ;
-
-natSpecComment
-  : natSpecSingleLineComment* | natSpecMultilineComment ;
-
 functionDefinition
-  : natSpecComment
-    'function' identifier? parameterList modifierList returnParameters? ( ';' | block ) ;
+  : 'function' identifier? parameterList modifierList returnParameters? ( ';' | block ) ;
 
 returnParameters
   : 'returns' parameterList ;
@@ -381,6 +348,9 @@ tupleExpression
 elementaryTypeNameExpression
   : elementaryTypeName ;
 
+natspec
+  : NATSPEC_COMMENT | NATSPEC_LINE_COMMENT ;
+
 numberLiteral
   : (DecimalNumber | HexNumber) NumberUnit? ;
 
@@ -472,9 +442,11 @@ SingleQuotedStringCharacter
 WS
   : [ \t\r\n\u000C]+ -> skip ;
 
-// TODO: better specification
+NATSPEC_COMMENT
+  : '/**' .*? '*/' ;
 COMMENT
-  : '/*' ~[@] '*/' -> channel(HIDDEN) ;
-
+  : '/*' .*? '*/' -> channel(HIDDEN) ;
+NATSPEC_LINE_COMMENT
+  : ([ \t]* '///' ~[\r\n]* [\r\n]?) + ;
 LINE_COMMENT
-  : '//' ~[/] ~[\r\n]* -> channel(HIDDEN) ;
+  : '//' ~[\r\n]* -> channel(HIDDEN) ;
