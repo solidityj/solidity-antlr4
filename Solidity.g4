@@ -32,6 +32,33 @@ importDirective
   | 'import' ('*' | identifier) ('as' identifier)? 'from' StringLiteral ';'
   | 'import' '{' importDeclaration ( ',' importDeclaration )* '}' 'from' StringLiteral ';' ;
 
+NatSpecKeyword
+  : '@'
+  ( 'title'
+  | 'author'
+  | 'notice'
+  | 'dev'
+  | 'param'
+  | 'return'
+  ) ;
+
+fragment
+NatSpecLineBreak
+  : [\r\n]? ;
+
+fragment
+NatSpecLineSpace
+  : [ \t*]* ;
+
+NatSpecSingleLineComment
+  : ([ \t]* '///' ~[\r\n]* [\r\n]?) + ;
+
+NatSpecMultilineComment
+  : '/**' NatSpecLineBreak (NatSpecLineSpace NatSpecKeyword .+? NatSpecLineBreak)* '*/' ;
+
+natSpec
+  : NatSpecSingleLineComment | NatSpecMultilineComment ;
+
 contractDefinition
   : natSpec? ( 'contract' | 'interface' | 'library' ) identifier
     ( 'is' inheritanceSpecifier (',' inheritanceSpecifier )* )?
@@ -347,15 +374,6 @@ tupleExpression
 
 elementaryTypeNameExpression
   : elementaryTypeName ;
-
-NatSpecMultilineComment
-  : '/**' .*? '*/' ;
-
-NatSpecSinglelineComment
-  : ([ \t]* '///' ~[\r\n]* [\r\n]?) + ;
-
-natSpec
-  : NatSpecMultilineComment | NatSpecSinglelineComment ;
 
 numberLiteral
   : (DecimalNumber | HexNumber) NumberUnit? ;
