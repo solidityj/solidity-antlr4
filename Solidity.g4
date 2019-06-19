@@ -33,7 +33,7 @@ importDirective
   | 'import' '{' importDeclaration ( ',' importDeclaration )* '}' 'from' StringLiteral ';' ;
 
 contractDefinition
-  : natspec? ( 'contract' | 'interface' | 'library' ) identifier
+  : natSpec? ( 'contract' | 'interface' | 'library' ) identifier
     ( 'is' inheritanceSpecifier (',' inheritanceSpecifier )* )?
     '{' contractPart* '}' ;
 
@@ -354,7 +354,7 @@ NatSpecMultilineComment
 NatSpecSinglelineComment
   : ([ \t]* '///' ~[\r\n]* [\r\n]?) + ;
 
-natspec
+natSpec
   : NatSpecMultilineComment | NatSpecSinglelineComment ;
 
 numberLiteral
