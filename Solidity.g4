@@ -32,6 +32,7 @@ importDirective
   | 'import' ('*' | identifier) ('as' identifier)? 'from' StringLiteral ';'
   | 'import' '{' importDeclaration ( ',' importDeclaration )* '}' 'from' StringLiteral ';' ;
 
+fragment
 NatSpecKeyword
   : '@'
   ( 'title'
@@ -99,7 +100,7 @@ modifierInvocation
   : identifier ( '(' expressionList? ')' )? ;
 
 functionDefinition
-  : 'function' identifier? parameterList modifierList returnParameters? ( ';' | block ) ;
+  : natSpec? 'function' identifier? parameterList modifierList returnParameters? ( ';' | block ) ;
 
 returnParameters
   : 'returns' parameterList ;
@@ -109,7 +110,7 @@ modifierList
     | PublicKeyword | InternalKeyword | PrivateKeyword )* ;
 
 eventDefinition
-  : 'event' identifier eventParameterList AnonymousKeyword? ';' ;
+  : natSpec? 'event' identifier eventParameterList AnonymousKeyword? ';' ;
 
 enumValue
   : identifier ;
