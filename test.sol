@@ -545,3 +545,9 @@ contract test {
 contract test {
   uint x = .1 ether;
 }
+
+contract test {
+  function () {
+    type(Proxy).creationCode;
+  }
+}

@@ -249,6 +249,7 @@ primaryExpression
   | HexLiteral
   | StringLiteral
   | identifier ('[' ']')?
+  | TypeKeyword
   | tupleExpression
   | elementaryTypeNameExpression ('[' ']')? ;
 
@@ -397,7 +398,6 @@ ReservedKeyword
   | 'static'
   | 'switch'
   | 'try'
-  | 'type'
   | 'typeof' ;
 
 AnonymousKeyword : 'anonymous' ;
@@ -411,6 +411,7 @@ PayableKeyword : 'payable' ;
 PrivateKeyword : 'private' ;
 PublicKeyword : 'public' ;
 PureKeyword : 'pure' ;
+TypeKeyword : 'type' ;
 ViewKeyword : 'view' ;
 
 Identifier
