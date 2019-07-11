@@ -82,7 +82,7 @@ contract derived is base {
     uint64(2);
   }
 }
-	
+
 contract foo {
   function fun() {
   }
@@ -550,4 +550,9 @@ contract test {
   function () {
     type(Proxy).creationCode;
   }
+}
+
+contract test {
+  uint x = 1_000_000;
+  uint y = 0x11_22_33;
 }

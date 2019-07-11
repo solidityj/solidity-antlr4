@@ -362,10 +362,10 @@ BooleanLiteral
   : 'true' | 'false' ;
 
 DecimalNumber
-  : ([0-9]+ | ([0-9]* '.' [0-9]+) ) ( [eE] [0-9]+ )? ;
+  : ([0-9] ( '_'? [0-9])* | ([0-9_]* '.' [0-9_]+) ) ( [eE] [0-9_]+ )? ;
 
 HexNumber
-  : '0' [xX] HexCharacter+ ;
+  : '0' [xX] ( HexCharacter | '_' ) + ;
 
 NumberUnit
   : 'wei' | 'szabo' | 'finney' | 'ether'
