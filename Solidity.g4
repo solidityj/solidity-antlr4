@@ -362,10 +362,18 @@ BooleanLiteral
   : 'true' | 'false' ;
 
 DecimalNumber
-  : ([0-9] ( '_'? [0-9])* | ([0-9_]* '.' [0-9_]+) ) ( [eE] [0-9_]+ )? ;
+  : ( DecimalDigits | (DecimalDigits? '.' DecimalDigits) ) ( [eE] DecimalDigits )? ;
+
+fragment
+DecimalDigits
+  : [0-9] ( '_'? [0-9] )* ;
 
 HexNumber
-  : '0' [xX] ( HexCharacter | '_' ) + ;
+  : '0' [xX] HexDigits ;
+
+fragment
+HexDigits
+  : HexCharacter ( '_'? HexCharacter )* ;
 
 NumberUnit
   : 'wei' | 'szabo' | 'finney' | 'ether'

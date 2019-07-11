@@ -556,3 +556,16 @@ contract test {
   uint x = 1_000_000;
   uint y = 0x11_22_33;
 }
+
+contract test {
+  function _finalization() internal {
+    if (goalReached()) {
+      _escrow.close();
+      _escrow.beneficiaryWithdraw();
+    } else {
+      _escrow.enableRefunds();
+    }
+
+    super._finalization();
+  }
+}
