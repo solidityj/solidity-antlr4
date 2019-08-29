@@ -48,7 +48,7 @@ contractDefinition
     '{' contractPart* '}' ;
 
 inheritanceSpecifier
-  : userDefinedTypeName ( '(' expression ( ',' expression )* ')' )? ;
+  : userDefinedTypeName ( '(' expressionList? ')' )? ;
 
 contractPart
   : stateVariableDeclaration
