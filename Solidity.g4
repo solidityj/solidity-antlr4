@@ -251,7 +251,7 @@ primaryExpression
   | identifier ('[' ']')?
   | TypeKeyword
   | tupleExpression
-  | elementaryTypeNameExpression ('[' ']')? ;
+  | typeNameExpression ('[' ']')? ;
 
 expressionList
   : expression (',' expression)* ;
@@ -346,8 +346,9 @@ tupleExpression
   : '(' ( expression? ( ',' expression? )* ) ')'
   | '[' ( expression ( ',' expression )* )? ']' ;
 
-elementaryTypeNameExpression
-  : elementaryTypeName ;
+typeNameExpression
+  : elementaryTypeName
+  | userDefinedTypeName ;
 
 numberLiteral
   : (DecimalNumber | HexNumber) NumberUnit? ;
