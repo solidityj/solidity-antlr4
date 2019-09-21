@@ -367,7 +367,7 @@ identifier
   : ('from' | 'calldata' | Identifier) ;
 
 VersionLiteral
-  : [0-9]+ '.' [0-9]+ '.' [0-9]+ ;
+  : [0-9]+ '.' [0-9]+ ('.' [0-9]+)? ;
 
 BooleanLiteral
   : 'true' | 'false' ;
