@@ -175,7 +175,7 @@ ifStatement
 
 tryStatement : 'try' expression returnParameters? block catchClause+ ;
 
-catchClause : 'catch' identifier? parameterList block ;
+catchClause : 'catch' identifier? parameterList? block ;
 
 whileStatement
   : 'while' '(' expression ')' statement ;

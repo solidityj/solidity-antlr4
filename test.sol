@@ -626,6 +626,12 @@ contract FeedConsumer {
             // by zero, etc. inside getData.
             errorCount++;
             return (0, false);
+        } catch {
+            // This is also executed in case revert() was used
+            // or there was a failing assertion, division
+            // by zero, etc. inside getData.
+            errorCount++;
+            return (0, false);
         }
     }
 }
