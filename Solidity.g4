@@ -236,7 +236,7 @@ Ufixed
 
 expression
   : expression ('++' | '--')
-  | newExpression
+  | 'new' typeName
   | expression '[' expression? ']'
   | expression '[' expression? ':' expression? ']'
   | expression '.' identifier
@@ -274,8 +274,6 @@ primaryExpression
 
 expressionList
   : expression (',' expression)* ;
-
-newExpression : 'new' typeName ;
 
 nameValueList
   : nameValue (',' nameValue)* ','? ;
