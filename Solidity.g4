@@ -100,7 +100,7 @@ returnParameters
 
 modifierList
   : ( modifierInvocation | stateMutability | ExternalKeyword
-    | PublicKeyword | InternalKeyword | PrivateKeyword | 'virtual' | overrideSpecifier )* ;
+    | PublicKeyword | InternalKeyword | PrivateKeyword | PayableKeyword | 'virtual' | overrideSpecifier )* ;
 
 eventDefinition
   : natSpec? 'event' identifier eventParameterList AnonymousKeyword? ';' ;
