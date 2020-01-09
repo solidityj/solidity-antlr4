@@ -1,4 +1,4 @@
-// Generated from Solidity.g4 by ANTLR 4.7.2
+// Generated from /Users/gnsps/solidity-antlr4/Solidity.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -10,7 +10,7 @@ import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class SolidityLexer extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -44,72 +44,63 @@ public class SolidityLexer extends Lexer {
 		"DEFAULT_MODE"
 	};
 
-	private static String[] makeRuleNames() {
-		return new String[] {
-			"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8", 
-			"T__9", "T__10", "T__11", "T__12", "T__13", "T__14", "T__15", "T__16", 
-			"T__17", "T__18", "T__19", "T__20", "T__21", "T__22", "T__23", "T__24", 
-			"T__25", "T__26", "T__27", "T__28", "T__29", "T__30", "T__31", "T__32", 
-			"T__33", "T__34", "T__35", "T__36", "T__37", "T__38", "T__39", "T__40", 
-			"T__41", "T__42", "T__43", "T__44", "T__45", "T__46", "T__47", "T__48", 
-			"T__49", "T__50", "T__51", "T__52", "T__53", "T__54", "T__55", "T__56", 
-			"T__57", "T__58", "T__59", "T__60", "T__61", "T__62", "T__63", "T__64", 
-			"T__65", "T__66", "T__67", "T__68", "T__69", "T__70", "T__71", "T__72", 
-			"T__73", "T__74", "T__75", "T__76", "T__77", "T__78", "T__79", "T__80", 
-			"T__81", "T__82", "T__83", "T__84", "T__85", "T__86", "T__87", "T__88", 
-			"T__89", "T__90", "T__91", "T__92", "NatSpecSingleLine", "NatSpecMultiLine", 
-			"Int", "Uint", "Byte", "Fixed", "Ufixed", "BooleanLiteral", "DecimalNumber", 
-			"DecimalDigits", "HexNumber", "HexDigits", "NumberUnit", "HexLiteral", 
-			"HexPair", "HexCharacter", "ReservedKeyword", "AnonymousKeyword", "BreakKeyword", 
-			"ConstantKeyword", "ContinueKeyword", "LeaveKeyword", "ExternalKeyword", 
-			"IndexedKeyword", "InternalKeyword", "PayableKeyword", "PrivateKeyword", 
-			"PublicKeyword", "PureKeyword", "TypeKeyword", "ViewKeyword", "Identifier", 
-			"IdentifierStart", "IdentifierPart", "StringLiteral", "DoubleQuotedStringCharacter", 
-			"SingleQuotedStringCharacter", "WS", "COMMENT", "LINE_COMMENT"
-		};
-	}
-	public static final String[] ruleNames = makeRuleNames();
+	public static final String[] ruleNames = {
+		"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8", 
+		"T__9", "T__10", "T__11", "T__12", "T__13", "T__14", "T__15", "T__16", 
+		"T__17", "T__18", "T__19", "T__20", "T__21", "T__22", "T__23", "T__24", 
+		"T__25", "T__26", "T__27", "T__28", "T__29", "T__30", "T__31", "T__32", 
+		"T__33", "T__34", "T__35", "T__36", "T__37", "T__38", "T__39", "T__40", 
+		"T__41", "T__42", "T__43", "T__44", "T__45", "T__46", "T__47", "T__48", 
+		"T__49", "T__50", "T__51", "T__52", "T__53", "T__54", "T__55", "T__56", 
+		"T__57", "T__58", "T__59", "T__60", "T__61", "T__62", "T__63", "T__64", 
+		"T__65", "T__66", "T__67", "T__68", "T__69", "T__70", "T__71", "T__72", 
+		"T__73", "T__74", "T__75", "T__76", "T__77", "T__78", "T__79", "T__80", 
+		"T__81", "T__82", "T__83", "T__84", "T__85", "T__86", "T__87", "T__88", 
+		"T__89", "T__90", "T__91", "T__92", "NatSpecSingleLine", "NatSpecMultiLine", 
+		"Int", "Uint", "Byte", "Fixed", "Ufixed", "BooleanLiteral", "DecimalNumber", 
+		"DecimalDigits", "HexNumber", "HexDigits", "NumberUnit", "HexLiteral", 
+		"HexPair", "HexCharacter", "ReservedKeyword", "AnonymousKeyword", "BreakKeyword", 
+		"ConstantKeyword", "ContinueKeyword", "LeaveKeyword", "ExternalKeyword", 
+		"IndexedKeyword", "InternalKeyword", "PayableKeyword", "PrivateKeyword", 
+		"PublicKeyword", "PureKeyword", "TypeKeyword", "ViewKeyword", "Identifier", 
+		"IdentifierStart", "IdentifierPart", "StringLiteral", "DoubleQuotedStringCharacter", 
+		"SingleQuotedStringCharacter", "WS", "COMMENT", "LINE_COMMENT"
+	};
 
-	private static String[] makeLiteralNames() {
-		return new String[] {
-			null, "'pragma'", "';'", "'as'", "'import'", "'*'", "'from'", "'{'", 
-			"','", "'}'", "'contract'", "'interface'", "'library'", "'is'", "'('", 
-			"')'", "'='", "'using'", "'for'", "'struct'", "'constructor'", "'modifier'", 
-			"'function'", "'returns'", "'event'", "'enum'", "'['", "']'", "'address'", 
-			"'.'", "'mapping'", "'=>'", "'memory'", "'storage'", "'calldata'", "'if'", 
-			"'else'", "'try'", "'catch'", "'while'", "'assembly'", "'do'", "'return'", 
-			"'throw'", "'emit'", "'var'", "'bool'", "'string'", "'byte'", "'++'", 
-			"'--'", "':'", "'+'", "'-'", "'after'", "'delete'", "'!'", "'~'", "'**'", 
-			"'/'", "'%'", "'<<'", "'>>'", "'&'", "'^'", "'|'", "'<'", "'>'", "'<='", 
-			"'>='", "'=='", "'!='", "'&&'", "'||'", "'?'", "'|='", "'^='", "'&='", 
-			"'<<='", "'>>='", "'+='", "'-='", "'*='", "'/='", "'%='", "'new'", "'let'", 
-			"':='", "'=:'", "'switch'", "'case'", "'default'", "'->'", "'override'", 
-			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, "'anonymous'", "'break'", "'constant'", "'continue'", "'leave'", 
-			"'external'", "'indexed'", "'internal'", "'payable'", "'private'", "'public'", 
-			"'pure'", "'type'", "'view'"
-		};
-	}
-	private static final String[] _LITERAL_NAMES = makeLiteralNames();
-	private static String[] makeSymbolicNames() {
-		return new String[] {
-			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, null, null, null, null, null, null, "NatSpecSingleLine", 
-			"NatSpecMultiLine", "Int", "Uint", "Byte", "Fixed", "Ufixed", "BooleanLiteral", 
-			"DecimalNumber", "HexNumber", "NumberUnit", "HexLiteral", "ReservedKeyword", 
-			"AnonymousKeyword", "BreakKeyword", "ConstantKeyword", "ContinueKeyword", 
-			"LeaveKeyword", "ExternalKeyword", "IndexedKeyword", "InternalKeyword", 
-			"PayableKeyword", "PrivateKeyword", "PublicKeyword", "PureKeyword", "TypeKeyword", 
-			"ViewKeyword", "Identifier", "StringLiteral", "WS", "COMMENT", "LINE_COMMENT"
-		};
-	}
-	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
+	private static final String[] _LITERAL_NAMES = {
+		null, "'pragma'", "';'", "'as'", "'import'", "'*'", "'from'", "'{'", "','", 
+		"'}'", "'contract'", "'interface'", "'library'", "'is'", "'('", "')'", 
+		"'='", "'using'", "'for'", "'struct'", "'constructor'", "'modifier'", 
+		"'function'", "'returns'", "'event'", "'enum'", "'['", "']'", "'address'", 
+		"'.'", "'mapping'", "'=>'", "'memory'", "'storage'", "'calldata'", "'if'", 
+		"'else'", "'try'", "'catch'", "'while'", "'assembly'", "'do'", "'return'", 
+		"'throw'", "'emit'", "'var'", "'bool'", "'string'", "'byte'", "'++'", 
+		"'--'", "':'", "'+'", "'-'", "'after'", "'delete'", "'!'", "'~'", "'**'", 
+		"'/'", "'%'", "'<<'", "'>>'", "'&'", "'^'", "'|'", "'<'", "'>'", "'<='", 
+		"'>='", "'=='", "'!='", "'&&'", "'||'", "'?'", "'|='", "'^='", "'&='", 
+		"'<<='", "'>>='", "'+='", "'-='", "'*='", "'/='", "'%='", "'new'", "'let'", 
+		"':='", "'=:'", "'switch'", "'case'", "'default'", "'->'", "'override'", 
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, "'anonymous'", "'break'", "'constant'", "'continue'", "'leave'", 
+		"'external'", "'indexed'", "'internal'", "'payable'", "'private'", "'public'", 
+		"'pure'", "'type'", "'view'"
+	};
+	private static final String[] _SYMBOLIC_NAMES = {
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, null, null, null, null, null, null, null, 
+		null, null, null, null, null, null, null, null, null, null, "NatSpecSingleLine", 
+		"NatSpecMultiLine", "Int", "Uint", "Byte", "Fixed", "Ufixed", "BooleanLiteral", 
+		"DecimalNumber", "HexNumber", "NumberUnit", "HexLiteral", "ReservedKeyword", 
+		"AnonymousKeyword", "BreakKeyword", "ConstantKeyword", "ContinueKeyword", 
+		"LeaveKeyword", "ExternalKeyword", "IndexedKeyword", "InternalKeyword", 
+		"PayableKeyword", "PrivateKeyword", "PublicKeyword", "PureKeyword", "TypeKeyword", 
+		"ViewKeyword", "Identifier", "StringLiteral", "WS", "COMMENT", "LINE_COMMENT"
+	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**

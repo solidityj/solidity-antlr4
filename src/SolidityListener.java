@@ -37,36 +37,6 @@ public interface SolidityListener extends ParseTreeListener {
 	 */
 	void exitPragmaName(SolidityParser.PragmaNameContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SolidityParser#version}.
-	 * @param ctx the parse tree
-	 */
-	void enterVersion(SolidityParser.VersionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SolidityParser#version}.
-	 * @param ctx the parse tree
-	 */
-	void exitVersion(SolidityParser.VersionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SolidityParser#versionOperator}.
-	 * @param ctx the parse tree
-	 */
-	void enterVersionOperator(SolidityParser.VersionOperatorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SolidityParser#versionOperator}.
-	 * @param ctx the parse tree
-	 */
-	void exitVersionOperator(SolidityParser.VersionOperatorContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SolidityParser#versionConstraint}.
-	 * @param ctx the parse tree
-	 */
-	void enterVersionConstraint(SolidityParser.VersionConstraintContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SolidityParser#versionConstraint}.
-	 * @param ctx the parse tree
-	 */
-	void exitVersionConstraint(SolidityParser.VersionConstraintContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link SolidityParser#importDeclaration}.
 	 * @param ctx the parse tree
 	 */
@@ -417,6 +387,26 @@ public interface SolidityListener extends ParseTreeListener {
 	 */
 	void exitIfStatement(SolidityParser.IfStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SolidityParser#tryStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterTryStatement(SolidityParser.TryStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SolidityParser#tryStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitTryStatement(SolidityParser.TryStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SolidityParser#catchClause}.
+	 * @param ctx the parse tree
+	 */
+	void enterCatchClause(SolidityParser.CatchClauseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SolidityParser#catchClause}.
+	 * @param ctx the parse tree
+	 */
+	void exitCatchClause(SolidityParser.CatchClauseContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SolidityParser#whileStatement}.
 	 * @param ctx the parse tree
 	 */
@@ -586,6 +576,26 @@ public interface SolidityListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpressionList(SolidityParser.ExpressionListContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SolidityParser#newExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterNewExpression(SolidityParser.NewExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SolidityParser#newExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitNewExpression(SolidityParser.NewExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SolidityParser#memberAccess}.
+	 * @param ctx the parse tree
+	 */
+	void enterMemberAccess(SolidityParser.MemberAccessContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SolidityParser#memberAccess}.
+	 * @param ctx the parse tree
+	 */
+	void exitMemberAccess(SolidityParser.MemberAccessContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SolidityParser#nameValueList}.
 	 * @param ctx the parse tree

@@ -12,15 +12,6 @@ pragmaDirective
 pragmaName
   : Identifier ;
 
-version
-  : versionConstraint versionConstraint? ;
-
-versionOperator
-  : '^' | '~' | '>=' | '>' | '<' | '<=' | '=' ;
-
-versionConstraint
-  : versionOperator? VersionLiteral ;
-
 importDeclaration
   : identifier ('as' identifier)? ;
 
@@ -148,6 +139,7 @@ block
 
 statement
   : ifStatement
+  | tryStatement
   | whileStatement
   | forStatement
   | block
@@ -165,6 +157,10 @@ expressionStatement
 
 ifStatement
   : 'if' '(' expression ')' statement ( 'else' statement )? ;
+
+tryStatement : 'try' expression ( 'returns' parameterList )? block catchClause+ ;
+
+catchClause : 'catch' identifier? parameterList block ;
 
 whileStatement
   : 'while' '(' expression ')' statement ;
@@ -225,10 +221,11 @@ Ufixed
 
 expression
   : expression ('++' | '--')
-  | 'new' typeName
-  | expression '[' expression ']'
-  | expression '(' functionCallArguments ')'
+  | newExpression
+  | expression '[' expression? ']'
+  | expression '[' expression? ':' expression? ']'
   | expression '.' identifier
+  | expression '(' functionCallArguments ')'
   | '(' expression ')'
   | ('++' | '--') expression
   | ('+' | '-') expression
@@ -262,6 +259,8 @@ primaryExpression
 
 expressionList
   : expression (',' expression)* ;
+
+newExpression : 'new' typeName ;
 
 nameValueList
   : nameValue (',' nameValue)* ','? ;
