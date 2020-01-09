@@ -187,7 +187,7 @@ tryStatement : 'try' expression returnParameters? block catchClause+ ;
 // the identifier can only be a set string: "Error". But plans
 // of the Solidity team include possible expansion so we'll
 // leave this as is, befitting with the Solidity docs.
-catchClause : 'catch' identifier? parameterList? block ;
+catchClause : 'catch' ( identifier? parameterList )? block ;
 
 whileStatement
   : 'while' '(' expression ')' statement ;
