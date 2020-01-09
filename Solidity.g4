@@ -7,13 +7,10 @@ sourceUnit
   : (pragmaDirective | importDirective | contractDefinition)* EOF ;
 
 pragmaDirective
-  : 'pragma' pragmaName pragmaValue ';' ;
+  : 'pragma' pragmaName .*? ';' ;
 
 pragmaName
-  : identifier ;
-
-pragmaValue
-  : version | expression ;
+  : Identifier ;
 
 version
   : versionConstraint versionConstraint? ;
@@ -62,7 +59,7 @@ contractPart
 
 stateVariableDeclaration
   : typeName
-    ( PublicKeyword | InternalKeyword | PrivateKeyword | ConstantKeyword )*
+    ( PublicKeyword | InternalKeyword | PrivateKeyword | ConstantKeyword | overrideSpecifier )*
     identifier ('=' expression)? ';' ;
 
 usingForDeclaration
@@ -296,6 +293,7 @@ assemblyItem
   | assemblyIf
   | BreakKeyword
   | ContinueKeyword
+  | LeaveKeyword
   | subAssembly
   | numberLiteral
   | StringLiteral
@@ -366,9 +364,6 @@ numberLiteral
 identifier
   : ('from' | 'calldata' | Identifier) ;
 
-VersionLiteral
-  : [0-9]+ '.' [0-9]+ '.' [0-9]+ ;
-
 BooleanLiteral
   : 'true' | 'false' ;
 
@@ -423,6 +418,7 @@ AnonymousKeyword : 'anonymous' ;
 BreakKeyword : 'break' ;
 ConstantKeyword : 'constant' ;
 ContinueKeyword : 'continue' ;
+LeaveKeyword : 'leave' ;
 ExternalKeyword : 'external' ;
 IndexedKeyword : 'indexed' ;
 InternalKeyword : 'internal' ;
@@ -432,6 +428,8 @@ PublicKeyword : 'public' ;
 PureKeyword : 'pure' ;
 TypeKeyword : 'type' ;
 ViewKeyword : 'view' ;
+
+overrideSpecifier : 'override' ( '(' userDefinedTypeName (',' userDefinedTypeName)* ')' )? ;
 
 Identifier
   : IdentifierStart IdentifierPart* ;
