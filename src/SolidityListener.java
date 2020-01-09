@@ -587,16 +587,6 @@ public interface SolidityListener extends ParseTreeListener {
 	 */
 	void exitNewExpression(SolidityParser.NewExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SolidityParser#memberAccess}.
-	 * @param ctx the parse tree
-	 */
-	void enterMemberAccess(SolidityParser.MemberAccessContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SolidityParser#memberAccess}.
-	 * @param ctx the parse tree
-	 */
-	void exitMemberAccess(SolidityParser.MemberAccessContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link SolidityParser#nameValueList}.
 	 * @param ctx the parse tree
 	 */

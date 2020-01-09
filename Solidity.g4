@@ -31,7 +31,7 @@ natSpec
   | NatSpecMultiLine ;
 
 contractDefinition
-  : natSpec? ( 'contract' | 'interface' | 'library' ) identifier
+  : natSpec? 'abstract'? ( 'contract' | 'interface' | 'library' ) identifier
     ( 'is' inheritanceSpecifier (',' inheritanceSpecifier )* )?
     '{' contractPart* '}' ;
 
@@ -64,7 +64,7 @@ constructorDefinition
   : 'constructor' parameterList modifierList block ;
 
 modifierDefinition
-  : 'modifier' identifier parameterList? block ;
+  : 'modifier' identifier parameterList? ( 'virtual' | overrideSpecifier )* block ;
 
 modifierInvocation
   : identifier ( '(' expressionList? ')' )? ;
@@ -77,7 +77,7 @@ returnParameters
 
 modifierList
   : ( modifierInvocation | stateMutability | ExternalKeyword
-    | PublicKeyword | InternalKeyword | PrivateKeyword )* ;
+    | PublicKeyword | InternalKeyword | PrivateKeyword | 'virtual' | overrideSpecifier )* ;
 
 eventDefinition
   : natSpec? 'event' identifier eventParameterList AnonymousKeyword? ';' ;

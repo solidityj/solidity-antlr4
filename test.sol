@@ -570,3 +570,63 @@ contract test {
     super._finalization();
   }
 }
+
+contract test {
+  function testFunction() {
+		assembly {
+			function power(base, exponent) -> result {
+        switch exponent
+        case 0 { result := 1 }
+        case 1 { result := base }
+        default {
+            result := power(mul(base, base), div(exponent, 2))
+            switch mod(exponent, 2)
+            case 1 {
+              result := mul(base, result)
+              leave
+            }
+        }
+    }
+		}
+  }
+}
+
+pragma solidity >=0.5.0 <0.7.0;
+
+contract Sharer {
+    function sendHalf(address payable addr) public payable returns (uint balance) {
+        require(msg.value % 2 == 0, "Even value required.");
+        uint balanceBeforeTransfer = address(this).balance;
+        addr.transfer(msg.value / 2);
+        // Since transfer throws an exception on failure and
+        // cannot call back here, there should be no way for us to
+        // still have half of the money.
+        assert(address(this).balance == balanceBeforeTransfer - msg.value / 2);
+        return address(this).balance;
+    }
+}
+
+contract FeedConsumer {
+    DataFeed feed;
+    uint errorCount;
+    function rate(address token) public returns (uint value, bool success) {
+        // Permanently disable the mechanism if there are
+        // more than 10 errors.
+        require(errorCount < 10);
+        try feed.getData(token) returns (uint v) {
+            return (v, true);
+        } catch Error(string memory /*reason*/) {
+            // This is executed in case
+            // revert was called inside getData
+            // and a reason string was provided.
+            errorCount++;
+            return (0, false);
+        } catch (bytes memory /*lowLevelData*/) {
+            // This is executed in case revert() was used
+            // or there was a failing assertion, division
+            // by zero, etc. inside getData.
+            errorCount++;
+            return (0, false);
+        }
+    }
+}
