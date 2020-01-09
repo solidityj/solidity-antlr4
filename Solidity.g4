@@ -10,7 +10,7 @@ pragmaDirective
   : 'pragma' pragmaName pragmaValue ';' ;
 
 pragmaName
-  : Identifier ;
+  : identifier ;
 
 pragmaValue
   : version | expression ;
@@ -58,6 +58,8 @@ contractPart
   | usingForDeclaration
   | structDefinition
   | constructorDefinition
+  | fallbackDefinition
+  | receiveDefinition
   | modifierDefinition
   | functionDefinition
   | eventDefinition
@@ -76,7 +78,7 @@ structDefinition
     '{' ( variableDeclaration ';' (variableDeclaration ';')* )? '}' ;
 
 constructorDefinition
-  : 'constructor' parameterList modifierList block ;
+  : natSpec? 'constructor' parameterList modifierList block ;
 
 modifierDefinition
   : 'modifier' identifier parameterList? ( 'virtual' | overrideSpecifier )* block ;
@@ -86,6 +88,12 @@ modifierInvocation
 
 functionDefinition
   : natSpec? 'function' identifier? parameterList modifierList returnParameters? ( ';' | block ) ;
+
+fallbackDefinition
+  : natSpec? 'fallback' parameterList modifierList ( ';' | block ) ;
+
+receiveDefinition
+  : natSpec? 'receive' parameterList modifierList ( ';' | block ) ;
 
 returnParameters
   : 'returns' parameterList ;
@@ -175,6 +183,10 @@ ifStatement
 
 tryStatement : 'try' expression returnParameters? block catchClause+ ;
 
+// In reality catch clauses still are not processed as below
+// the identifier can only be a set string: "Error". But plans
+// of the Solidity team include possible expansion so we'll
+// leave this as is, befitting with the Solidity docs.
 catchClause : 'catch' identifier? parameterList? block ;
 
 whileStatement

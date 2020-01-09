@@ -635,3 +635,9 @@ contract FeedConsumer {
         }
     }
 }
+
+
+contract test {
+  receive () external payable {}
+  fallback () external payable {}
+}
