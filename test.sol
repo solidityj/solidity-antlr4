@@ -7,6 +7,7 @@ pragma solidity <0.4.4;
 pragma solidity <=0.4.4;
 pragma solidity =0.4.4;
 pragma solidity 0.4;
+pragma solidity >=0.5.0 <0.7.0;
 
 library a {}
 library b {}
@@ -590,8 +591,6 @@ contract test {
 		}
   }
 }
-
-pragma solidity >=0.5.0 <0.7.0;
 
 contract Sharer {
     function sendHalf(address payable addr) public payable returns (uint balance) {

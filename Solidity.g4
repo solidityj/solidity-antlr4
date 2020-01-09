@@ -7,10 +7,25 @@ sourceUnit
   : (pragmaDirective | importDirective | contractDefinition)* EOF ;
 
 pragmaDirective
-  : 'pragma' pragmaName .*? ';' ;
+  : 'pragma' pragmaName pragmaValue ';' ;
 
 pragmaName
   : Identifier ;
+
+pragmaValue
+  : version | expression ;
+
+version
+  : versionConstraint versionConstraint? ;
+
+versionOperator
+  : '^' | '~' | '>=' | '>' | '<' | '<=' | '=' ;
+
+versionConstraint
+  : versionOperator? VersionLiteral ;
+
+VersionLiteral
+  : [0-9]+ '.' [0-9]+ ('.' [0-9]+)? ;
 
 importDeclaration
   : identifier ('as' identifier)? ;
