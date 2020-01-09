@@ -141,7 +141,7 @@ mapping
 functionTypeName
   : 'function' functionTypeParameterList
     ( InternalKeyword | ExternalKeyword | stateMutability )*
-    ( 'returns' functionTypeParameterList )? ;
+    returnParameters? ;
 
 storageLocation
   : 'memory' | 'storage' | 'calldata';
@@ -173,7 +173,7 @@ expressionStatement
 ifStatement
   : 'if' '(' expression ')' statement ( 'else' statement )? ;
 
-tryStatement : 'try' expression ( 'returns' parameterList )? block catchClause+ ;
+tryStatement : 'try' expression returnParameters? block catchClause+ ;
 
 catchClause : 'catch' identifier? parameterList block ;
 
