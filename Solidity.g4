@@ -149,7 +149,7 @@ mapping
 functionTypeName
   : 'function' functionTypeParameterList
     ( InternalKeyword | ExternalKeyword | stateMutability )*
-    returnParameters? ;
+    ( 'returns' functionTypeParameterList )? ;
 
 storageLocation
   : 'memory' | 'storage' | 'calldata';
