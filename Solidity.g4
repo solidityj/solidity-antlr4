@@ -57,9 +57,6 @@ contractPart
   : stateVariableDeclaration
   | usingForDeclaration
   | structDefinition
-  | constructorDefinition
-  | fallbackDefinition
-  | receiveDefinition
   | modifierDefinition
   | functionDefinition
   | eventDefinition
@@ -77,9 +74,6 @@ structDefinition
   : 'struct' identifier
     '{' ( variableDeclaration ';' (variableDeclaration ';')* )? '}' ;
 
-constructorDefinition
-  : natSpec? 'constructor' parameterList modifierList block ;
-
 modifierDefinition
   : 'modifier' identifier parameterList? ( 'virtual' | overrideSpecifier )* block ;
 
@@ -87,13 +81,13 @@ modifierInvocation
   : identifier ( '(' expressionList? ')' )? ;
 
 functionDefinition
-  : natSpec? 'function' identifier? parameterList modifierList returnParameters? ( ';' | block ) ;
+  : natSpec? functionDescriptor parameterList modifierList returnParameters? ( ';' | block ) ;
 
-fallbackDefinition
-  : natSpec? 'fallback' parameterList modifierList ( ';' | block ) ;
-
-receiveDefinition
-  : natSpec? 'receive' parameterList modifierList ( ';' | block ) ;
+functionDescriptor
+  : 'function' identifier?
+  | ConstructorKeyword
+  | FallbackKeyword
+  | ReceiveKeyword ;
 
 returnParameters
   : 'returns' parameterList ;
@@ -452,6 +446,10 @@ PublicKeyword : 'public' ;
 PureKeyword : 'pure' ;
 TypeKeyword : 'type' ;
 ViewKeyword : 'view' ;
+
+ConstructorKeyword : 'constructor' ;
+FallbackKeyword : 'fallback' ;
+ReceiveKeyword : 'receive' ;
 
 overrideSpecifier : 'override' ( '(' userDefinedTypeName (',' userDefinedTypeName)* ')' )? ;
 
