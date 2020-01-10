@@ -13,6 +13,7 @@ Now maintained by the ConsenSys Diligence team! :tada:
 ## Authors
 
 Gonçalo Sá ([@gnsps](https://twitter.com/gnsps))
+
 Federico Bond ([@federicobond](https://github.com/federicobond))
 
 ## License
