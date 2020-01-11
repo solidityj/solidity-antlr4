@@ -1,3 +1,4 @@
+// Copyright 2020 Gonçalo Sá <goncalo.sa@consensys.net>
 // Copyright 2016-2019 Federico Bond <federicobond@gmail.com>
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
@@ -35,18 +36,8 @@ importDirective
   | 'import' ('*' | identifier) ('as' identifier)? 'from' StringLiteral ';'
   | 'import' '{' importDeclaration ( ',' importDeclaration )* '}' 'from' StringLiteral ';' ;
 
-NatSpecSingleLine
-  : ('///' .*? [\r\n]) + ;
-
-NatSpecMultiLine
-  : '/**' .*? '*/' ;
-
-natSpec
-  : NatSpecSingleLine
-  | NatSpecMultiLine ;
-
 contractDefinition
-  : natSpec? 'abstract'? ( 'contract' | 'interface' | 'library' ) identifier
+  : 'abstract'? ( 'contract' | 'interface' | 'library' ) identifier
     ( 'is' inheritanceSpecifier (',' inheritanceSpecifier )* )?
     '{' contractPart* '}' ;
 
@@ -81,7 +72,7 @@ modifierInvocation
   : identifier ( '(' expressionList? ')' )? ;
 
 functionDefinition
-  : natSpec? functionDescriptor parameterList modifierList returnParameters? ( ';' | block ) ;
+  : functionDescriptor parameterList modifierList returnParameters? ( ';' | block ) ;
 
 functionDescriptor
   : 'function' identifier?
@@ -97,7 +88,7 @@ modifierList
     | PublicKeyword | InternalKeyword | PrivateKeyword | 'virtual' | overrideSpecifier )* ;
 
 eventDefinition
-  : natSpec? 'event' identifier eventParameterList AnonymousKeyword? ';' ;
+  : 'event' identifier eventParameterList AnonymousKeyword? ';' ;
 
 enumValue
   : identifier ;
