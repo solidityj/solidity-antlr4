@@ -16,5 +16,18 @@ mkdir -p target/
 java -jar $ANTLR_JAR $GRAMMAR.g4 -o src/
 javac -classpath $ANTLR_JAR src/*.java -d target/
 
-java -classpath $ANTLR_JAR:target/ org.antlr.v4.gui.TestRig "$GRAMMAR" "$START_RULE" < "$TEST_FILE" 2>&1 |
-  grep -qE "$ERROR_PATTERN" && echo "TESTS FAIL!" || echo "TESTS PASS!"
+if [[ "$1" == "-vv" ]] ; then
+  java -classpath $ANTLR_JAR:target/ org.antlr.v4.gui.TestRig "$GRAMMAR" "$START_RULE" -gui < "$TEST_FILE"
+else
+  TEST_OUTPUT=$(java -classpath $ANTLR_JAR:target/ org.antlr.v4.gui.TestRig "$GRAMMAR" "$START_RULE" < "$TEST_FILE" 2>&1)
+
+  if [[ "$1" == "-v" ]] ; then
+    echo $TEST_OUTPUT | grep -qE "$ERROR_PATTERN" && echo "TESTS FAIL!" || echo "TESTS PASS!"
+    echo ""
+    echo $TEST_OUTPUT
+  else
+    echo $TEST_OUTPUT | grep -qE "$ERROR_PATTERN" && echo "TESTS FAIL!" || echo "TESTS PASS!"
+  fi
+fi
+
+
