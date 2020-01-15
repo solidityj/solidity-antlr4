@@ -394,7 +394,7 @@ NumberUnit
   : 'wei' | 'szabo' | 'finney' | 'ether'
   | 'seconds' | 'minutes' | 'hours' | 'days' | 'weeks' | 'years' ;
 
-HexLiteral : 'hex' ('"' HexPair* '"' | '\'' HexPair* '\'') ;
+HexLiteral : 'hex' ('"' HexDigits '"' | '\'' HexDigits '\'') ;
 
 fragment
 HexPair

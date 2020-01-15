@@ -200,6 +200,7 @@ contract test {
 contract test {
     string a = hex"00FF0000";
     string b = hex'00AA0000';
+    string b = hex'00AA_0000';
 }
 contract test {
     function fun(uint256 a) {
@@ -555,8 +556,16 @@ contract test {
 }
 
 contract test {
-  uint x = 1_000_000;
-  uint y = 0x11_22_33;
+  uint x = 1000000;
+  int x2 = -1000000;
+  int x3 = -1000000 * 200;
+  uint y = .25;
+  uint y2 = 0.25;
+  // uint y3 = 10.25;
+  // uint y4 = 100.25;
+  // uint y5 = 0.0025 * 1e18;
+  uint z = 0x11_22;
+  uint z2 = 0x1122;
 }
 
 contract test {
