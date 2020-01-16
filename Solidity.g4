@@ -25,9 +25,6 @@ versionOperator
 versionConstraint
   : versionOperator? VersionLiteral ;
 
-VersionLiteral
-  : [0-9]+ '.' [0-9]+ ('.' [0-9]+)? ;
-
 importDeclaration
   : identifier ('as' identifier)? ;
 
@@ -466,6 +463,9 @@ DoubleQuotedStringCharacter
 fragment
 SingleQuotedStringCharacter
   : ~['\r\n\\] | ('\\' .) ;
+
+VersionLiteral
+  : [0-9]+ '.' [0-9]+ ('.' [0-9]+)? ;
 
 WS
   : [ \t\r\n\u000C]+ -> skip ;
