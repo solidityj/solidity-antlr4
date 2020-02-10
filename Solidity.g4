@@ -234,6 +234,7 @@ expression
   | expression '[' expression? ']'
   | expression '[' expression? ':' expression? ']'
   | expression '.' identifier
+  | expression '{' nameValueList '}'
   | expression '(' functionCallArguments ')'
   | '(' expression ')'
   | ('++' | '--') expression
