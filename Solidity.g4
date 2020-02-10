@@ -303,7 +303,7 @@ assemblyItem
   | LeaveKeyword
   | subAssembly
   | numberLiteral
-  | StringLiteral
+  | StringLiteral+
   | HexLiteral ;
 
 assemblyExpression
@@ -454,7 +454,8 @@ IdentifierPart
   : [a-zA-Z0-9$_] ;
 
 StringLiteral
-  : ( '"' DoubleQuotedStringCharacter* '"' | '\'' SingleQuotedStringCharacter* '\'' )+ ;
+  : '"' DoubleQuotedStringCharacter* '"'
+  | '\'' SingleQuotedStringCharacter* '\'' ;
 
 fragment
 DoubleQuotedStringCharacter
