@@ -707,4 +707,6 @@ contract C {
 contract c {
     string a = "aaa"
     "bbb";
+    string b = "aaa""bbb";
+    string c = "aaa"  "bbb";
 }
