@@ -261,7 +261,7 @@ primaryExpression
   : BooleanLiteral
   | numberLiteral
   | HexLiteral
-  | StringLiteral
+  | StringLiteral+
   | identifier ('[' ']')?
   | TypeKeyword
   | tupleExpression
@@ -454,8 +454,7 @@ IdentifierPart
   : [a-zA-Z0-9$_] ;
 
 StringLiteral
-  : '"' DoubleQuotedStringCharacter* '"'
-  | '\'' SingleQuotedStringCharacter* '\'' ;
+  : ( '"' DoubleQuotedStringCharacter* '"' | '\'' SingleQuotedStringCharacter* '\'' )+ ;
 
 fragment
 DoubleQuotedStringCharacter

@@ -703,3 +703,8 @@ contract C {
         require(address(d) == predictedAddress);
     }
 }
+
+contract c {
+    string a = "aaa"
+    "bbb";
+}
