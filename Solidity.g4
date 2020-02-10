@@ -261,7 +261,7 @@ primaryExpression
   : BooleanLiteral
   | numberLiteral
   | HexLiteral
-  | StringLiteral+
+  | StringLiteral
   | identifier ('[' ']')?
   | TypeKeyword
   | tupleExpression
@@ -303,7 +303,7 @@ assemblyItem
   | LeaveKeyword
   | subAssembly
   | numberLiteral
-  | StringLiteral+
+  | StringLiteral
   | HexLiteral ;
 
 assemblyExpression
@@ -454,6 +454,9 @@ IdentifierPart
   : [a-zA-Z0-9$_] ;
 
 StringLiteral
+  : StringLiteralFragment (WS? StringLiteralFragment)* ;
+
+StringLiteralFragment
   : '"' DoubleQuotedStringCharacter* '"'
   | '\'' SingleQuotedStringCharacter* '\'' ;
 
