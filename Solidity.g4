@@ -63,7 +63,7 @@ structDefinition
     '{' ( variableDeclaration ';' (variableDeclaration ';')* )? '}' ;
 
 modifierDefinition
-  : 'modifier' identifier parameterList? ( 'virtual' | overrideSpecifier )* block ;
+  : 'modifier' identifier parameterList? ( VirtualKeyword | overrideSpecifier )* block ;
 
 modifierInvocation
   : identifier ( '(' expressionList? ')' )? ;
@@ -82,7 +82,7 @@ returnParameters
 
 modifierList
   : ( modifierInvocation | stateMutability | ExternalKeyword
-    | PublicKeyword | InternalKeyword | PrivateKeyword | 'virtual' | overrideSpecifier )* ;
+    | PublicKeyword | InternalKeyword | PrivateKeyword | VirtualKeyword | overrideSpecifier )* ;
 
 eventDefinition
   : 'event' identifier eventParameterList AnonymousKeyword? ';' ;
@@ -432,6 +432,7 @@ InternalKeyword : 'internal' ;
 PayableKeyword : 'payable' ;
 PrivateKeyword : 'private' ;
 PublicKeyword : 'public' ;
+VirtualKeyword : 'virtual' ;
 PureKeyword : 'pure' ;
 TypeKeyword : 'type' ;
 ViewKeyword : 'view' ;
