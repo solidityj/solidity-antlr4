@@ -264,6 +264,7 @@ primaryExpression
   | stringLiteral
   | identifier ('[' ']')?
   | TypeKeyword
+  | PayableKeyword
   | tupleExpression
   | typeNameExpression ('[' ']')? ;
 

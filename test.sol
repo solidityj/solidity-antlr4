@@ -737,3 +737,10 @@ contract Base2 is Destructible {
 contract Final is Base1, Base2 {
     function destroy() public override(Base1, Base2) { super.destroy(); }
 }
+
+contract PayableAddress {
+    function payableFn() public pure {
+        address x;
+        address y = payable(x);
+    }
+}
