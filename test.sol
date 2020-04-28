@@ -744,3 +744,7 @@ contract PayableAddress {
         address y = payable(x);
     }
 }
+
+contract C { 
+    uint immutable x;
+}

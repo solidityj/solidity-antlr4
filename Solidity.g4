@@ -52,7 +52,7 @@ contractPart
 
 stateVariableDeclaration
   : typeName
-    ( PublicKeyword | InternalKeyword | PrivateKeyword | ConstantKeyword | overrideSpecifier )*
+	( PublicKeyword | InternalKeyword | PrivateKeyword | ConstantKeyword | ImmutableKeyword  | overrideSpecifier )*
     identifier ('=' expression)? ';' ;
 
 usingForDeclaration
@@ -428,6 +428,7 @@ ConstantKeyword : 'constant' ;
 ContinueKeyword : 'continue' ;
 LeaveKeyword : 'leave' ;
 ExternalKeyword : 'external' ;
+ImmutableKeyword : 'immutable' ;
 IndexedKeyword : 'indexed' ;
 InternalKeyword : 'internal' ;
 PayableKeyword : 'payable' ;
